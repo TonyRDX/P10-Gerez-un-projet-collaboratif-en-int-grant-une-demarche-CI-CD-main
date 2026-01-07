@@ -44,6 +44,11 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Add summary
+        run: |
+          echo "## SonarCloud Results" >> $GITHUB_STEP_SUMMARY
+          echo "[Voir le rapport Backend](https://sonarcloud.io/dashboard?id=tonyrdx_P10-back)" >> $GITHUB_STEP_SUMMARY
+
       - name: SonarCloud Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 5
@@ -80,6 +85,11 @@ jobs:
           projectBaseDir: front
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Add summary
+        run: |
+          echo "## SonarCloud Results" >> $GITHUB_STEP_SUMMARY
+          echo "[Voir le rapport Frontend](https://sonarcloud.io/dashboard?id=tonyrdx_P10-front)" >> $GITHUB_STEP_SUMMARY
 
       - name: SonarCloud Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
